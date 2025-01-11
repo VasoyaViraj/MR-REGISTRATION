@@ -1,101 +1,229 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React, { useState } from "react";
+import {Button, Input, Checkbox, Link} from "@nextui-org/react";
+import {Icon} from "@iconify/react";
+
+const FanFicRegestration : React.FC = () => {
+
+  let [dataa,setDataa] = useState({
+    'teamName':'',
+
+    'teamLeadName':'',
+    'teamLeadContactNumber':'',
+    'teamLeadRollNo':'',
+
+    'teamMember2Name':'',
+    'teamMember2ContactNumber':'',
+    'teamMember2RollNumber':'',
+
+    'teamMember3Name':'',
+    'teamMember3ContactNumber':'',
+    'teamMember3RollNumber':'',
+
+    'teamMember4Name':'',
+    'teamMember4ContactNumber':'',
+    'teamMember4RollNumber':'',
+
+  })
+
+  function handleClick(){
+    console.log(dataa);
+    
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-r from-black to-[#071f8b] text-white">
+      
+        <div className="flex w-full mt-28 max-w-sm flex-col gap-4 rounded-large px-14 pb-10 pt-6 z-20 relative border-2 border-white bg-[rgba(240,248,255,0.097)] text-[#e3f4e6]">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="absolute z-10 h-[100px] w-[100px] fill-none stroke-[#ff2050] stroke-[8px] top-32 left-2">
+            <circle cx="50" cy="50" r="40" />
+          </svg>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="absolute z-10 h-[150px] w-[150px] fill-none stroke-[#ff2050] stroke-[8px] top-[350px] left-56">
+            <rect x="25" y="25" width="70" height="70" />
+          </svg>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="absolute z-10 h-[120px] w-[120px] fill-none stroke-[#ff2050] stroke-[8px] top-[800px] left-2">
+            <polygon points="50,15 90,85 10,85" />
+          </svg>
+
+          <p 
+            className={`pb-4 text-center text-3xl font-bold text-[#8CF954]`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            Fan Fiction Quiz
+          </p>
+
+          <form className="flex flex-col gap-4 z-50" onSubmit={(e) => e.preventDefault()}>
+
+            <Input
+              isRequired
+              label="Teamname"
+              labelPlacement="outside"
+              name="teamName"
+              value={dataa.teamName}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamName : e.target.value})}
+              placeholder="Enter your teamname"
+              type="text"
+              variant="bordered"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+            <Input
+              isRequired
+              label="Team lead name"
+              labelPlacement="outside"
+              name="teamLeadName"
+              // value="teamLeadName"
+              value={dataa.teamLeadName}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamLeadName : e.target.value})}
+              placeholder="Enter team lead name"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              isRequired
+              label="Team lead contact number"
+              labelPlacement="outside"
+              name="teamLeadContactNumber"
+              // value="teamLeadContactNumber"
+              value={dataa.teamLeadContactNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamLeadContactNumber : e.target.value})}
+              placeholder="Enter team lead contact number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              isRequired
+              label="Team lead roll no"
+              labelPlacement="outside"
+              name="teamLeadRollNo"
+              // value="teamLeadRollNo"
+              value={dataa.teamLeadRollNo}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamLeadRollNo : e.target.value})}
+              placeholder="Enter your team lead contact number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 2 name"
+              labelPlacement="outside"
+              name="teamMember2Name"
+              // value="teamMember2Name"
+              value={dataa.teamMember2Name}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember2Name : e.target.value})}
+              placeholder="Enter team member 2 name"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 2 contact number"
+              labelPlacement="outside"
+              name="teamMember2ContactNumber"
+              // value="teamMember2ContactNumber"
+              value={dataa.teamMember2ContactNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember2ContactNumber : e.target.value})}
+              placeholder="Enter team member 2 contact number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 2 roll number"
+              labelPlacement="outside"
+              name="teamMember2RollNumber"
+              // value="teamMember2RollNumber"
+              value={dataa.teamMember2RollNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember2RollNumber : e.target.value})}
+              placeholder="Enter team member 2 roll number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 3 name"
+              labelPlacement="outside"
+              name="teamMember3Name"
+              // value="teamMember3Name"
+              value={dataa.teamMember3Name}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember3Name : e.target.value})}
+              placeholder="Enter team member 3 name"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 3 contact number"
+              labelPlacement="outside"
+              name="teamMember3ContactNumber"
+              // value="teamMember3ContactNumber"
+              value={dataa.teamMember3ContactNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember3ContactNumber : e.target.value})}
+              placeholder="Enter team member 3 contact number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 3 roll number"
+              labelPlacement="outside"
+              name="teamMember3RollNumber"
+              // value="teamMember3RollNumber"
+              value={dataa.teamMember3RollNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember3RollNumber : e.target.value})}
+              placeholder="Enter team member 3 roll number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 4 name"
+              labelPlacement="outside"
+              name="teamMember4Name"
+              // value="teamMember4Name"
+              value={dataa.teamMember4Name}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember4Name : e.target.value})}
+              placeholder="Enter team member 4 name"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 4 contact number"
+              labelPlacement="outside"
+              name="teamMember4ContactNumber"
+              // value="teamMember4ContactNumber"
+              value={dataa.teamMember4ContactNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember4ContactNumber : e.target.value})}
+              placeholder="Enter team member 4 contact number"
+              type="text"
+              variant="bordered"
+            />
+            <Input
+              
+              label="Team member 4 roll number"
+              labelPlacement="outside"
+              name="teamMember4RollNumber"
+              // value="teamMember4RollNumber"
+              value={dataa.teamMember4RollNumber}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDataa({...dataa, teamMember4RollNumber : e.target.value})}
+              placeholder="Enter team member 4 roll number"
+              type="text"
+              variant="bordered"
+            />
+
+
+            <Button color="primary" type="submit" className="mt-2 bg-[#9eec4b] text-[#071f8b] text-[15px] font-bold" onPress={handleClick}>
+              Register
+            </Button>
+
+          </form>
+
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
+
+export default FanFicRegestration
