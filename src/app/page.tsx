@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import {Button, Input, Checkbox, Link} from "@nextui-org/react";
+import { databases, client } from '../services/Database';
 import {Icon} from "@iconify/react";
+import { Databases } from "appwrite";
 
 const FanFicRegestration : React.FC = () => {
 
@@ -27,9 +29,28 @@ const FanFicRegestration : React.FC = () => {
 
   })
 
-  function handleClick(){
-    console.log(dataa);
-    
+  async function handleClick(e : any){
+
+    try{
+
+      const response = databases.createDocument(
+        process.env.NEXT_PUBLIC_APPWRITE_DATABASEID!,
+        process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONID!,
+        // '677305ac00095c78d53e',
+        // '678206e200050747c3fe',
+        'unique()',
+        dataa
+      )
+
+      console.log("done");
+      console.log(response);
+      
+      
+      window.localStorage.setItem('TeamName',dataa.teamName)
+
+    }catch{
+      console.log(e);
+    }
   }
 
   return (
